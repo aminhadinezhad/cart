@@ -38,7 +38,7 @@
       }
 
       body {
-        font-family: 'Vazirmatn', sans-serif;
+        font-family: 'Vazirmatn';
         background: #ffffff;
         color: var(--text-dark);
         min-height: 100vh;
@@ -64,12 +64,12 @@
         font-size: 1.3rem;
       }
       .cart-count-badge {
-        background: var(--green-main);
+        background: var(--green-light);
         color: #fff;
         font-size: 0.72rem;
         font-weight: 600;
         border-radius: 50px;
-        padding: 2px 9px;
+        padding: 2px 10px;
         margin-right: 4px;
       }
 
@@ -139,8 +139,6 @@
       .product-img {
         width: 52px;
         height: 52px;
-        border-radius: 8px;
-        border: 1px solid var(--gray-border);
         background: var(--gray-light);
       }
       .product-name {
@@ -221,13 +219,12 @@
       .form-control {
         border-radius: 8px;
         border: 1px solid var(--gray-border);
-        font-family: 'Vazirmatn', sans-serif;
         font-size: 0.875rem;
         padding: 10px 13px;
         color: var(--text-dark);
-        transition:
-          border-color 0.2s,
-          box-shadow 0.2s;
+        background-repeat: no-repeat;
+        background-position: left 0.75rem center;
+        background-size: 16px 12px;
       }
       .form-select:focus,
       .form-control:focus {
@@ -310,24 +307,18 @@
         border: none;
         border-radius: 9px;
         padding: 13px 28px;
-        font-family: 'Vazirmatn', sans-serif;
         font-size: 0.95rem;
         font-weight: 700;
         cursor: pointer;
-        transition:
-          background 0.18s,
-          transform 0.12s,
-          box-shadow 0.18s;
+        transition: all 0.18s;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 7px;
         justify-content: center;
         width: 100%;
       }
       .btn-main:hover {
         background: #228a33;
-        box-shadow: 0 4px 14px rgba(41, 163, 62, 0.3);
-        transform: translateY(-1px);
       }
 
       .btn-outline-main {
@@ -336,14 +327,13 @@
         border: 1.5px solid var(--green-main);
         border-radius: 9px;
         padding: 12px 28px;
-        font-family: 'Vazirmatn', sans-serif;
         font-size: 0.88rem;
         font-weight: 600;
         cursor: pointer;
         transition: all 0.18s;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 7px;
         justify-content: center;
         width: 100%;
       }
@@ -372,7 +362,7 @@
         display: none !important;
       }
 
-      @media (max-width: 767px) {
+      @media (max-width: 991.91px) {
         .cart-header h1 {
           font-size: 1.1rem;
         }
@@ -388,24 +378,20 @@
           border-bottom: none;
         }
         .product-table tbody td {
-          display: block;
+          display: flex;
+          justify-content: space-between;
           border-bottom: none;
-          padding: 3px 14px;
+          padding: 7px 14px;
+        }
+        .product-table tbody td:nth-child(1) {
+          display: none;
         }
         .product-table tbody td::before {
           content: attr(data-label);
           font-size: 0.72rem;
+          font-weight: bold;
           color: var(--text-muted);
-          display: block;
           margin-bottom: 2px;
-        }
-        .td-product {
-          display: flex !important;
-          align-items: center;
-          gap: 12px;
-        }
-        .td-product::before {
-          display: none !important;
         }
         .section-card-body {
           padding: 14px;
@@ -443,21 +429,7 @@
         <div class="d-flex align-items-center justify-content-center">
           <a href="https://www.taminfalat.com/">
             <span>مشاهده محصولات بیشتر</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-arrow-left-icon lucide-arrow-left"
-            >
-              <path d="m12 19-7-7 7-7" />
-              <path d="M19 12H5" />
-            </svg>
+            <i class="bi bi-arrow-left"></i>
           </a>
         </div>
       </div>
@@ -546,7 +518,8 @@
         <div class="col-lg-4 col-md-5">
           <div class="section-card">
             <div class="section-card-header">
-              <i class="bi bi-receipt"></i> فاکتور
+              <i class="bi bi-file-text"></i>
+              فاکتور
             </div>
             <div class="section-card-body">
               <div class="invoice-toggle">
@@ -566,7 +539,7 @@
             </div>
             <div class="section-card-body">
               <select class="form-select">
-                <option value="" disabled selected>انتخاب کنید</option>
+                <option value="" selected>انتخاب کنید</option>
               </select>
             </div>
           </div>
@@ -577,7 +550,9 @@
             </div>
             <div class="section-card-body">
               <select class="form-select">
-                <option value="" disabled selected>انتخاب کنید</option>
+                <option value="" selected>انتخاب کنید</option>
+                <option value="">درگاه بانک رفاه/سامان</option>
+                <option value="">درگاه بانک پاسارگاد</option>
               </select>
             </div>
           </div>
@@ -595,11 +570,13 @@
           </div>
 
           <div class="d-flex flex-column gap-2 mt-2" id="actionButtons">
-            <button class="btn-outline-main" onclick="alert('پیش‌فاکتور')">
-              <i class="bi bi-file-earmark-text"></i> مشاهده پیش فاکتور
+            <button class="btn-outline-main">
+              <i class="bi bi-file-text"></i>
+              مشاهده پیش فاکتور
             </button>
-            <button class="btn-main" onclick="alert('ثبت سفارش')">
-              <i class="bi bi-bag-check"></i> ادامه ثبت سفارش
+            <button class="btn-main">
+              <i class="bi bi-cart-check"></i>
+              ادامه ثبت سفارش
             </button>
           </div>
         </div>
@@ -660,7 +637,7 @@
           const tr = document.createElement('tr');
           tr.innerHTML = `
             <td data-label="ردیف">${toFarsiNum(idx + 1)}</td>
-            <td class="td-product" data-label="کالا">
+            <td data-label="کالا">
               <div class="product">
                 <a href="${item.href}">
                   <img class="product-img" src="${item.src}" alt="" />
